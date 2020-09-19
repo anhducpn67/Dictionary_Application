@@ -28,10 +28,17 @@ public class DictionaryCommandline extends DictionaryManagement {
     public void dictionaryAdvanced() {
         insertFromFile();
         showAllWords();
-//        while(true) {
-//            Scanner scanner = new Scanner();
-//
-//        }
+        while(true) {
+            Scanner scanner = new Scanner(System.in);
+            String command = scanner.nextLine();
+            switch (command) {
+                case "remove" -> removeWordFromDictionary();
+                case "edit" -> editWordInDictionary();
+                case "add" -> addWordToDictionary();
+                case "lookup" -> dictionaryLookup();
+                case "show" -> showAllWords();
+            }
+        }
     }
 
     public static void main(String[] args) {
