@@ -6,4 +6,8 @@ public class Word {
         this.wordTarget = wordTarget;
         this.wordExplain = wordExplain;
     }
+
+    public Word() {
+
+    }
 }
