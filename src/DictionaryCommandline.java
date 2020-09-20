@@ -1,3 +1,5 @@
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
+
 import java.util.Scanner;
 
 public class DictionaryCommandline extends DictionaryManagement {
@@ -20,6 +22,16 @@ public class DictionaryCommandline extends DictionaryManagement {
         }
     }
 
+    public void showAllCommand() {
+        System.out.println("remove  Remove a word from dictionary");
+        System.out.println("edit    Edit explain of a word in dictionary");
+        System.out.println("add     Add a new word to dictionary");
+        System.out.println("lookup  Find explain of a word");
+        System.out.println("show    Show all words in dictionary");
+        System.out.println("search  Show all words start with ...");
+        System.out.println("export  Export current dictionary to file");
+    }
+
     public void dictionaryBasic() {
         insertFromCommandline();
         showAllWords();
@@ -32,11 +44,30 @@ public class DictionaryCommandline extends DictionaryManagement {
             Scanner scanner = new Scanner(System.in);
             String command = scanner.nextLine();
             switch (command) {
-                case "remove" -> removeWordFromDictionary();
-                case "edit" -> editWordInDictionary();
-                case "add" -> addWordToDictionary();
-                case "lookup" -> dictionaryLookup();
-                case "show" -> showAllWords();
+                case "remove":
+                    removeWordFromDictionary();
+                    break;
+                case "edit":
+                    editWordInDictionary();
+                    break;
+                case "add":
+                    addWordToDictionary();
+                    break;
+                case "lookup":
+                    dictionaryLookup();
+                    break;
+                case "show":
+                    showAllWords();
+                    break;
+                case "search":
+                    dictionarySearcher();
+                    break;
+                case "export":
+                    dictionaryExportToFile();
+                    break;
+                case "help":
+                    showAllCommand();
+                    break;
             }
         }
     }
