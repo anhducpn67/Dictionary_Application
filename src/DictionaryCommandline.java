@@ -30,6 +30,7 @@ public class DictionaryCommandline extends DictionaryManagement {
         System.out.println("show    Show all words in dictionary");
         System.out.println("search  Show all words start with ...");
         System.out.println("export  Export current dictionary to file");
+        System.out.println("exit    Close dictionary application");
     }
 
     public void dictionaryBasic() {
@@ -40,7 +41,8 @@ public class DictionaryCommandline extends DictionaryManagement {
     public void dictionaryAdvanced() {
         insertFromFile();
         showAllWords();
-        while(true) {
+        boolean isRunning = true;
+        while(isRunning) {
             Scanner scanner = new Scanner(System.in);
             String command = scanner.nextLine();
             switch (command) {
@@ -67,6 +69,9 @@ public class DictionaryCommandline extends DictionaryManagement {
                     break;
                 case "help":
                     showAllCommand();
+                    break;
+                case "exit":
+                    isRunning = false;
                     break;
             }
         }
