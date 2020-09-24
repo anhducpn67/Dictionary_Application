@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class Word {
-    public String wordTarget;  // New word
-    public String wordExplain; // Explanation of word
+    private String wordTarget;  // New word
+    private String wordExplain; // Explanation of word
 
     public Word(String wordTarget, String wordExplain) {
         this.wordTarget = wordTarget;
@@ -11,6 +11,14 @@ public class Word {
 
     public Word() {
 
+    }
+
+    public String getWordTarget() {
+        return wordTarget;
+    }
+
+    public String getWordExplain() {
+        return wordExplain;
     }
 
     public void readWord(Scanner scanner) {

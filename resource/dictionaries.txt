@@ -1,7 +1,0 @@
-chicken	con gà
-woman	người phụ nữ
-make a deal	thỏa thuận
-nephew	cháu trai
-niece	cháu gái
-character	chữ, tên tuổi, nhân vật
-character actor	diễn viên

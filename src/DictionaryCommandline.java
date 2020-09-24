@@ -1,5 +1,3 @@
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
-
 import java.util.Scanner;
 
 public class DictionaryCommandline extends DictionaryManagement {
@@ -7,7 +5,7 @@ public class DictionaryCommandline extends DictionaryManagement {
     public void showAllWords() {
         System.out.printf("%-15s %-20s %-15s%n", "No", "English", "Vietnamese");
         for (int i = 0; i < allWords.size(); i++) {
-            System.out.printf("%-15d %-20s %-15s%n", (i + 1), allWords.get(i).wordTarget, allWords.get(i).wordExplain);
+            System.out.printf("%-15d %-20s %-15s%n", (i + 1), allWords.get(i).getWordTarget(), allWords.get(i).getWordExplain());
         }
     }
 
@@ -16,7 +14,7 @@ public class DictionaryCommandline extends DictionaryManagement {
         Scanner scanner = new Scanner(System.in);
         String searchWord = scanner.nextLine();
         for (Word word: allWords) {
-            if (word.wordTarget.startsWith(searchWord)) {
+            if (word.getWordTarget().startsWith(searchWord)) {
                 word.writeWord();
             }
         }
@@ -75,10 +73,5 @@ public class DictionaryCommandline extends DictionaryManagement {
                     break;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        DictionaryCommandline myDictionary = new DictionaryCommandline();
-        myDictionary.dictionaryAdvanced();
     }
 }
