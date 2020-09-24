@@ -1,8 +1,8 @@
 No              English              Vietnamese     
 1               chicken              con gà         
-2               woman                người phụ nữ   
-3               make a deal          thỏa thuận     
-4               nephew               cháu trai      
-5               niece                cháu gái       
-6               character            chữ, tên tuổi, nhân vật
-7               character actor      diễn viên      
+2               make a deal          thỏa thuận     
+3               nephew               cháu trai      
+4               niece                cháu gái       
+5               character            chữ, tên tuổi, nhân vật
+6               character actor      diễn viên      
+7               dark                 bóng tối, ma   
