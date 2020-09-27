@@ -1,3 +1,9 @@
 dictionary_icon: https://www.iconexperience.com/g_collection/icons/?icon=dictionary
 
 Need a error messenger: https://www.youtube.com/watch?v=SpL3EToqaXA&list=PL6gx4Cwl9DGBzfXLWLSYVy8EbTdpGbUIG&index=5
+
+dict_hh: https://github.com/yenthanh132/avdict-database-sqlite-converter/blob/master/dict_hh.db
+
+audio: http://shtooka.net/download.php
+
+speaker_icon: https://vi.m.wikipedia.org/wiki/T%E1%BA%ADp_tin:Speaker_Icon.svg
