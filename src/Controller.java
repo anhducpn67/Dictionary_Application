@@ -1,3 +1,4 @@
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXColorPicker;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.ObservableList;
@@ -8,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 
 import java.sql.ResultSet;
@@ -40,6 +42,9 @@ public class Controller {
 
     @FXML
     private ListView listView;
+
+    @FXML
+    private JFXButton adderWord;
 
     @FXML
     public void changeColor() {
@@ -86,5 +91,10 @@ public class Controller {
         String searchWord = searchTextField.getText();
         String audioPath = ProjectConfig.audioPath + searchWord + ".mp3";
         Utils.playAudio(audioPath);
+    }
+
+    public void addNewWord() {
+        HTMLEditor htmlEditor = new HTMLEditor();
+        borderPane.setCenter(htmlEditor);
     }
 }
