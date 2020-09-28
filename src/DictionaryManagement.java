@@ -31,4 +31,9 @@ public class DictionaryManagement extends Dictionary {
             return "<h1>Chúng tôi không tìm thấy từ mà bạn yêu cầu.</h1>";
         }
     }
+
+    public ResultSet dictionarySearch(String searchWord) {
+        String query = "SELECT * FROM av WHERE word LIKE " + "'" + searchWord + "%'";
+        return mySQLite.executeQuery(query);
+    }
 }
