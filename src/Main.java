@@ -9,8 +9,6 @@ public class Main extends Application {
 
     public static void primaryStageConfig(Stage primaryStage) {
         primaryStage.setTitle("Dictionary Application");
-        primaryStage.setHeight(ProjectConfig.primaryStageHeight);
-        primaryStage.setWidth(ProjectConfig.primaryStageWidth);
         Image dictionary_icon = Utils.loadImage(ProjectConfig.dictionaryIconPath);
         primaryStage.getIcons().add(dictionary_icon);
     }
@@ -18,6 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         primaryStageConfig(primaryStage);
+        AddWordScene.initialize();
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

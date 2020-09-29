@@ -23,7 +23,7 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public String dictionaryLookup(String lookupWord) {
-        String query = "SELECT * FROM av WHERE word LIKE " + "'" + lookupWord + "'";
+        String query = "SELECT * FROM " + ProjectConfig.databaseName + " WHERE word LIKE " + "'" + lookupWord + "'";
         ResultSet resultSet = mySQLite.executeQuery(query);
         try {
             return resultSet.getString("html");
@@ -33,7 +33,12 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public ResultSet dictionarySearch(String searchWord) {
-        String query = "SELECT * FROM av WHERE word LIKE " + "'" + searchWord + "%'";
+        String query = "SELECT * FROM "+ ProjectConfig.databaseName +" WHERE word LIKE " + "'" + searchWord + "%'";
         return mySQLite.executeQuery(query);
+    }
+
+    public void saveNewWord() {
+
+
     }
 }

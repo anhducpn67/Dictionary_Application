@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 
 import java.sql.ResultSet;
@@ -44,7 +43,7 @@ public class Controller {
     private ListView listView;
 
     @FXML
-    private JFXButton adderWord;
+    private JFXButton adderButton;
 
     @FXML
     public void changeColor() {
@@ -93,8 +92,7 @@ public class Controller {
         Utils.playAudio(audioPath);
     }
 
-    public void addNewWord() {
-        HTMLEditor htmlEditor = new HTMLEditor();
-        borderPane.setCenter(htmlEditor);
+    public void setAddWordScene() {
+        borderPane.setCenter(AddWordScene.vBox);
     }
 }
