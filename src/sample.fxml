@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="915.0" style="-fx-background-color: #4DD0E1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
@@ -34,15 +33,13 @@
       <JFXColorPicker fx:id="colorPicker" onAction="#changeColor" promptText="Change Color" style="-fx-background-color: #4DD0E1;" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
-      <VBox prefHeight="767.0" prefWidth="605.0" style="-fx-background-color: #FFFFFFFF;" BorderPane.alignment="CENTER">
+      <VBox fx:id="wordExplainScene" prefHeight="767.0" prefWidth="605.0" style="-fx-background-color: #FFFFFFFF;" BorderPane.alignment="CENTER">
          <children>
-            <Text fx:id="wordText" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="653.13671875" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="System Bold Italic" size="30.0" />
-               </font>
-            </Text>
-            <FontAwesomeIconView fx:id="speakerIcon" glyphName="VOLUME_UP" onMouseClicked="#pronounceWord" size="20" visible="false" />
-            <WebView fx:id="webViewBottom" pickOnBounds="true" prefHeight="706.0" prefWidth="618.0" style="-fx-font-scale: 1.25;" />
+            <FontAwesomeIconView fx:id="speakerIcon" glyphName="VOLUME_UP" onMouseClicked="#pronounceWord" size="20" visible="false">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="5.0" />
+               </VBox.margin></FontAwesomeIconView>
+            <WebView fx:id="webViewBottom" pickOnBounds="true" prefHeight="750.0" prefWidth="653.0" style="-fx-font-scale: 1.25;" VBox.vgrow="ALWAYS" />
          </children>
          <BorderPane.margin>
             <Insets right="5.0" />

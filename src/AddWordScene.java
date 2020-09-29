@@ -11,13 +11,13 @@ public class AddWordScene {
 
     public static HTMLEditor htmlEditor = new HTMLEditor();
     public static JFXButton saveButton = new JFXButton("Save");
-    public static VBox vBox = new VBox();
+    public static VBox addWordScene = new VBox();
 
     public static void initialize() {
         initializeSaveButton();
         initializeHtmlEditor();
-        vBox.getChildren().addAll(htmlEditor, saveButton);
-        vBox.setPadding(new Insets(0, 5, 5, 0));
+        addWordScene.getChildren().addAll(htmlEditor, saveButton);
+        addWordScene.setPadding(new Insets(0, 5, 5, 0));
     }
 
     public static void initializeHtmlEditor() {
@@ -30,6 +30,14 @@ public class AddWordScene {
         saveButton.setPrefHeight(50);
         saveButton.setPrefWidth(100);
         saveButton.setStyle("-fx-background-color: #388E3C");
-        saveButton.setOnAction(click -> System.out.println(htmlEditor.getHtmlText()));
+        saveButton.setOnAction(click -> actionAddWord());
+    }
+
+//    TODO: make a dialog "Saved"
+    public static void actionAddWord() {
+        String html = htmlEditor.getHtmlText();
+        String word = Utils.getWordFromHtlmText(html);
+        Word newWord = new Word(word, html);
+        myDictionary.saveNewWord(newWord);
     }
 }

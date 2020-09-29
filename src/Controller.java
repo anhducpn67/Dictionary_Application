@@ -8,13 +8,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.scene.web.WebView;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Controller {
+public class Controller extends AddWordScene {
 
     DictionaryManagement myDictionary = DictionaryManagement.getDictionaryManagement();
 
@@ -27,8 +26,6 @@ public class Controller {
     @FXML
     private JFXColorPicker colorPicker;
 
-    @FXML
-    private Text wordText;
 
     @FXML
     private WebView webViewBottom;
@@ -46,6 +43,9 @@ public class Controller {
     private JFXButton adderButton;
 
     @FXML
+    private VBox wordExplainScene;
+
+    @FXML
     public void changeColor() {
         Color selectedColor = colorPicker.getValue();
         borderPane.setBackground(new Background(new BackgroundFill(
@@ -60,12 +60,9 @@ public class Controller {
     }
 
     public void searchWord() {
+        setWordExplainScene();
         String searchWord = searchTextField.getText();
         String htmlOfSearchWord = myDictionary.dictionaryLookup(searchWord);
-        searchWord = "<h1>" + searchWord + "</h1>";
-        htmlOfSearchWord = htmlOfSearchWord.substring(searchWord.length());
-        searchWord = searchTextField.getText();
-        wordText.setText(searchWord);
         htmlOfSearchWord = "<body style=" + "\"background-color:#FFFFFFFF;" + "\">" + htmlOfSearchWord;
         htmlOfSearchWord = htmlOfSearchWord + "</body>";
         webViewBottom.getEngine().loadContent(htmlOfSearchWord);
@@ -93,6 +90,10 @@ public class Controller {
     }
 
     public void setAddWordScene() {
-        borderPane.setCenter(AddWordScene.vBox);
+        borderPane.setCenter(AddWordScene.addWordScene);
+    }
+
+    public void setWordExplainScene() {
+        borderPane.setCenter(wordExplainScene);
     }
 }

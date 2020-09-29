@@ -31,6 +31,16 @@ public class Utils {
         return printWriter;
     }
 
+    public static String getWordFromHtlmText(String htmlText) {
+        StringBuilder word = new StringBuilder();
+        int index = htmlText.indexOf("</font>") - 1;
+        while (htmlText.charAt(index) != '>') {
+            word.insert(0, htmlText.charAt(index));
+            index--;
+        }
+        return word.toString();
+    }
+
     public static Image loadImage(String filePath) {
         Image image = null;
         try {

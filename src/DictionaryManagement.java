@@ -1,3 +1,4 @@
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -37,8 +38,18 @@ public class DictionaryManagement extends Dictionary {
         return mySQLite.executeQuery(query);
     }
 
-    public void saveNewWord() {
-
-
+    public void saveNewWord(Word newWord) {
+        String sql = "INSERT INTO " + ProjectConfig.databaseName +
+        "(id, word, html)" + "VALUES(?,?,?)";
+        try {
+            PreparedStatement preparedStatement;
+            preparedStatement = mySQLite.connection.prepareStatement(sql);
+            preparedStatement.setInt(1, newWord.id);
+            preparedStatement.setString(2, newWord.word);
+            preparedStatement.setString(3, newWord.html);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
