@@ -41,10 +41,11 @@ public class DictionaryManagement extends Dictionary {
     public void saveNewWord(Word newWord) {
         String sql = "INSERT INTO " + ProjectConfig.databaseName +
         "(id, word, html)" + "VALUES(?,?,?)";
+        int numberRows = mySQLite.countRows();
         try {
             PreparedStatement preparedStatement;
             preparedStatement = mySQLite.connection.prepareStatement(sql);
-            preparedStatement.setInt(1, newWord.id);
+            preparedStatement.setInt(1, numberRows + 1);
             preparedStatement.setString(2, newWord.word);
             preparedStatement.setString(3, newWord.html);
             preparedStatement.executeUpdate();

@@ -1,6 +1,9 @@
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import java.io.*;
 import java.util.Scanner;
@@ -32,13 +35,9 @@ public class Utils {
     }
 
     public static String getWordFromHtlmText(String htmlText) {
-        StringBuilder word = new StringBuilder();
-        int index = htmlText.indexOf("</font>") - 1;
-        while (htmlText.charAt(index) != '>') {
-            word.insert(0, htmlText.charAt(index));
-            index--;
-        }
-        return word.toString();
+        Document document = Jsoup.parse(htmlText, "UTF-8");
+        Element element = document.body().select("> p").first();
+        return element.text();
     }
 
     public static Image loadImage(String filePath) {

@@ -33,11 +33,12 @@ public class AddWordScene {
         saveButton.setOnAction(click -> actionAddWord());
     }
 
-//    TODO: make a dialog "Saved"
+//    TODO: make a dialog "Saved" or "Already had"
     public static void actionAddWord() {
         String html = htmlEditor.getHtmlText();
         String word = Utils.getWordFromHtlmText(html);
         Word newWord = new Word(word, html);
+        System.out.println(word);
         myDictionary.saveNewWord(newWord);
     }
 }

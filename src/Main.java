@@ -24,8 +24,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        DictionaryManagement dictionaryManagement = DictionaryManagement.getDictionaryManagement();
-        dictionaryManagement.loadWordFromDatabase();
+        DictionaryManagement myDictionary = DictionaryManagement.getDictionaryManagement();
+        myDictionary.loadWordFromDatabase();
         launch(args);
     }
 }

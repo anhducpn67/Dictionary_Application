@@ -47,4 +47,15 @@ public class SQLite {
         }
         return resultSet;
     }
+
+    public int countRows() {
+        String query = "SELECT COUNT(id) AS total FROM " + ProjectConfig.databaseName;
+        try {
+            ResultSet resultSet = mySQLite.executeQuery(query);
+            return resultSet.getInt("total");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
 }
