@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="915.0" style="-fx-background-color: #4DD0E1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="915.0" style="-fx-background-color: #4DD0E1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphic.primaryStage.PrimaryStageController">
    <left>
       <VBox fx:id="leftVBox" prefHeight="767.0" prefWidth="257.0" style="-fx-background-color: #4DD0E1;" BorderPane.alignment="CENTER">
          <children>
@@ -101,7 +101,7 @@
                               <FontAwesomeIconView glyphName="PLUS_SQUARE" size="22" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#setAddWordScene" prefHeight="60.0" prefWidth="200.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text="Edit Word">
+                        <JFXButton fx:id="editButton" buttonType="RAISED" onAction="#setEditWordScene" prefHeight="60.0" prefWidth="200.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text="Edit Word">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>

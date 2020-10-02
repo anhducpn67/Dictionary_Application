@@ -1,9 +1,11 @@
+package utility;
+
 import java.sql.*;
 
 public class SQLite {
 
     private static SQLite mySQLite;
-    Connection connection = null;
+    public Connection connection = null;
 
     private SQLite() {
 

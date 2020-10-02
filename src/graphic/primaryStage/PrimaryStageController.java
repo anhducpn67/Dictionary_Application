@@ -1,6 +1,11 @@
+package graphic.primaryStage;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXColorPicker;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import dictionary.DictionaryManagement;
+import graphic.additionalScene.AddWordScene;
+import graphic.additionalScene.EditWordScene;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -9,11 +14,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
+import utility.ProjectConfig;
+import utility.Utils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Controller extends AddWordScene {
+public class PrimaryStageController {
 
     DictionaryManagement myDictionary = DictionaryManagement.getDictionaryManagement();
 
@@ -25,7 +32,6 @@ public class Controller extends AddWordScene {
 
     @FXML
     private JFXColorPicker colorPicker;
-
 
     @FXML
     private WebView webViewBottom;
@@ -41,6 +47,9 @@ public class Controller extends AddWordScene {
 
     @FXML
     private JFXButton adderButton;
+
+    @FXML
+    private JFXButton editButton;
 
     @FXML
     private VBox wordExplainScene;
@@ -90,10 +99,17 @@ public class Controller extends AddWordScene {
     }
 
     public void setAddWordScene() {
-        borderPane.setCenter(AddWordScene.addWordScene);
+        AddWordScene addWordScene = AddWordScene.getAddWordScene();
+        borderPane.setCenter(addWordScene.scene);
     }
 
     public void setWordExplainScene() {
         borderPane.setCenter(wordExplainScene);
+    }
+
+    public void setEditWordScene() {
+        EditWordScene editWordScene = EditWordScene.getEditWordScene();
+        editWordScene.editWord(searchTextField.getText());
+        borderPane.setCenter(editWordScene.scene);
     }
 }
