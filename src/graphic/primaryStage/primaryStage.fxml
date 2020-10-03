@@ -90,7 +90,7 @@
                      </HBox.margin></FontAwesomeIconView>
                   <ToolBar fx:id="toolBar" prefHeight="70.0" prefWidth="655.0" style="-fx-background-color: #4DD0E1;">
                     <items>
-                        <JFXButton fx:id="adderButton" buttonType="RAISED" onAction="#setAddWordScene" prefHeight="60.0" prefWidth="200.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text=" Add Word">
+                        <JFXButton buttonType="RAISED" onAction="#setAddWordScene" prefHeight="60.0" prefWidth="200.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text=" Add Word">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -101,7 +101,7 @@
                               <FontAwesomeIconView glyphName="PLUS_SQUARE" size="22" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="editButton" buttonType="RAISED" onAction="#setEditWordScene" prefHeight="60.0" prefWidth="200.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text="Edit Word">
+                        <JFXButton buttonType="RAISED" onAction="#setEditWordScene" prefHeight="60.0" prefWidth="200.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text="Edit Word">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -112,7 +112,7 @@
                               <FontAwesomeIconView glyphName="EDIT" size="22" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" prefHeight="60.0" prefWidth="215.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text="API Google Translate">
+                        <JFXButton buttonType="RAISED" onAction="#setGoogleTranslateScene" prefHeight="60.0" prefWidth="215.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text="API Google Translate">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>

@@ -1,7 +1,6 @@
 package graphic.primaryStage;
 
 import audio.TextToSpeech;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXColorPicker;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import dictionary.DictionaryManagement;
@@ -9,16 +8,17 @@ import graphic.additionalScene.AddWordScene;
 import graphic.additionalScene.EditWordScene;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
-import utility.ProjectConfig;
-import utility.Utils;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -46,12 +46,6 @@ public class PrimaryStageController {
 
     @FXML
     private ListView listView;
-
-    @FXML
-    private JFXButton adderButton;
-
-    @FXML
-    private JFXButton editButton;
 
     @FXML
     private VBox wordExplainScene;
@@ -119,4 +113,15 @@ public class PrimaryStageController {
         editWordScene.editWord(searchTextField.getText());
         borderPane.setCenter(editWordScene.scene);
     }
+
+    public void setGoogleTranslateScene() {
+        Parent GoogleTranslateScene = null;
+        try {
+            GoogleTranslateScene = FXMLLoader.load(getClass().getResource("/graphic/primaryStage/GoogleTranslate.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        borderPane.setCenter(GoogleTranslateScene);
+    }
+
 }
