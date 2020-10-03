@@ -1,5 +1,6 @@
 package graphic.primaryStage;
 
+import audio.TextToSpeech;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXColorPicker;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -11,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
@@ -55,6 +57,9 @@ public class PrimaryStageController {
     private VBox wordExplainScene;
 
     @FXML
+    private ToolBar toolBar;
+
+    @FXML
     public void changeColor() {
         Color selectedColor = colorPicker.getValue();
         borderPane.setBackground(new Background(new BackgroundFill(
@@ -64,6 +69,9 @@ public class PrimaryStageController {
                 selectedColor, CornerRadii.EMPTY, Insets.EMPTY
         )));
         listView.setBackground(new Background(new BackgroundFill(
+                selectedColor, CornerRadii.EMPTY, Insets.EMPTY
+        )));
+        toolBar.setBackground(new Background(new BackgroundFill(
                 selectedColor, CornerRadii.EMPTY, Insets.EMPTY
         )));
     }
@@ -93,9 +101,8 @@ public class PrimaryStageController {
     }
 
     public void pronounceWord() {
-        String searchWord = searchTextField.getText();
-        String audioPath = ProjectConfig.audioPath + searchWord + ".mp3";
-        Utils.playAudio(audioPath);
+        String word = searchTextField.getText();
+        TextToSpeech.speak(word);
     }
 
     public void setAddWordScene() {

@@ -88,7 +88,7 @@
                      <HBox.margin>
                         <Insets right="5.0" top="5.0" />
                      </HBox.margin></FontAwesomeIconView>
-                  <ToolBar prefHeight="70.0" prefWidth="655.0" style="-fx-background-color: #4DD0E1;">
+                  <ToolBar fx:id="toolBar" prefHeight="70.0" prefWidth="655.0" style="-fx-background-color: #4DD0E1;">
                     <items>
                         <JFXButton fx:id="adderButton" buttonType="RAISED" onAction="#setAddWordScene" prefHeight="60.0" prefWidth="200.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text=" Add Word">
                            <padding>

@@ -1,8 +1,6 @@
 package utility;
 
 import javafx.scene.image.Image;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -52,15 +50,5 @@ public class Utils {
             e.printStackTrace();
         }
         return image;
-    }
-
-    // TODO: Change .mp3 to text to speech
-    public static void playAudio(String audioPath) {
-        File file = new File(audioPath);
-        if (file.exists()) {
-            Media media = new Media(new File(audioPath).toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.play();
-        }
     }
 }

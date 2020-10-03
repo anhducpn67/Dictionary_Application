@@ -1,5 +1,5 @@
 package dictionary;
-import utility.SQLite;
+import database.SQLite;
 
 public class Dictionary {
     SQLite mySQLite = SQLite.getSQLite();

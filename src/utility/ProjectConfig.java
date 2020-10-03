@@ -1,7 +1,7 @@
 package utility;
 
 public class ProjectConfig {
-    final public static String databasePath = "jdbc:sqlite:C://sqlite/dict_hh.db";
+    final public static String databasePath = "jdbc:sqlite:D:/Study/OOP/Dictionary_Application/resource/dictionary/dict_hh.db";
     final public static String audioPath = "./resource/audio/En-us-";
     final public static String databaseName = "av";
 
