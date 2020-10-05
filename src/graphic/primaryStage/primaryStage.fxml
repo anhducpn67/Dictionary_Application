@@ -17,37 +17,72 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="915.0" style="-fx-background-color: #4DD0E1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphic.primaryStage.PrimaryStageController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #4DD0E1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphic.primaryStage.PrimaryStageController">
    <left>
-      <VBox fx:id="leftVBox" prefHeight="767.0" prefWidth="257.0" style="-fx-background-color: #4DD0E1;" BorderPane.alignment="CENTER">
+      <VBox fx:id="leftVBox" prefHeight="550.0" prefWidth="201.0" style="-fx-background-color: GREY;" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="listView" onMouseClicked="#selectWordInListView" prefHeight="767.0" prefWidth="248.0" style="-fx-background-color: #4DD0E1;" VBox.vgrow="ALWAYS">
+            <JFXListView fx:id="listView" onMouseClicked="#selectWordInListView" opacity="0.75" prefHeight="562.0" prefWidth="191.0" VBox.vgrow="ALWAYS">
                <VBox.margin>
-                  <Insets left="5.0" right="5.0" />
+                  <Insets />
                </VBox.margin>
             </JFXListView>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" />
+         </BorderPane.margin>
       </VBox>
    </left>
    <bottom>
       <JFXColorPicker fx:id="colorPicker" onAction="#changeColor" promptText="Change Color" style="-fx-background-color: #4DD0E1;" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
-      <VBox fx:id="wordExplainScene" prefHeight="767.0" prefWidth="605.0" style="-fx-background-color: #FFFFFFFF;" BorderPane.alignment="CENTER">
+      <VBox fx:id="wordExplainScene" prefHeight="767.0" prefWidth="605.0" style="-fx-background-color: GREY;" BorderPane.alignment="CENTER">
          <children>
-            <FontAwesomeIconView fx:id="speakerIcon" glyphName="VOLUME_UP" onMouseClicked="#pronounceWord" size="20" visible="false">
+            <FontAwesomeIconView fx:id="speakerIcon" glyphName="VOLUME_UP" onMouseClicked="#pronounceWord" size="20">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
                </VBox.margin></FontAwesomeIconView>
-            <WebView fx:id="webViewBottom" pickOnBounds="true" prefHeight="750.0" prefWidth="653.0" style="-fx-font-scale: 1.25;" VBox.vgrow="ALWAYS" />
+            <WebView fx:id="wordExplainView" opacity="0.75" pickOnBounds="true" prefHeight="711.0" prefWidth="604.0" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></WebView>
+            <ToolBar style="-fx-background-color: GREY;">
+               <items>
+                  <JFXButton buttonType="RAISED" onAction="#setEditWordScene" prefHeight="30.0" prefWidth="100.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text="Edit" textAlignment="CENTER" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="EDIT" size="20" textAlignment="CENTER" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#deleteWord" prefHeight="30.0" prefWidth="100.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text="Delete" textAlignment="CENTER" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="EDIT" size="20" textAlignment="CENTER" />
+                     </graphic>
+                  </JFXButton>
+               </items>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ToolBar>
          </children>
          <BorderPane.margin>
-            <Insets right="5.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" />
          </BorderPane.margin>
       </VBox>
    </center>
    <top>
-      <VBox prefHeight="108.0" prefWidth="900.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="100.0" prefWidth="900.0" BorderPane.alignment="CENTER">
          <children>
             <MenuBar prefHeight="21.0" prefWidth="900.0">
               <menus>
@@ -70,49 +105,34 @@
             </MenuBar>
             <HBox prefHeight="79.0" prefWidth="890.0">
                <VBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="5.0" left="5.0" />
                </VBox.margin>
                <children>
-                  <JFXTextField fx:id="searchTextField" focusColor="#00fff6" onAction="#searchWord" onKeyReleased="#printRelativeWords" prefHeight="39.0" prefWidth="201.0" promptText=" Search English" style="-fx-background-color: #FFFFFF;" unFocusColor="#00ff40">
+                  <JFXTextField fx:id="searchTextField" focusColor="BLACK" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#searchWord" onKeyReleased="#printRelativeWords" prefHeight="45.0" prefWidth="350.0" promptText=" Search English" style="-fx-background-color: GREY; -fx-text-inner-color: WHITE; -fx-prompt-text-fill: WHITE;" unFocusColor="BLACK" HBox.hgrow="NEVER">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="5.0" right="5.0" top="5.0" />
+                        <Insets right="5.0" top="10.0" />
                      </HBox.margin>
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </JFXTextField>
-                  <FontAwesomeIconView glyphName="SEARCH" size="35" wrappingWidth="29.14285659790039">
-                     <HBox.margin>
-                        <Insets right="5.0" top="5.0" />
-                     </HBox.margin></FontAwesomeIconView>
-                  <ToolBar fx:id="toolBar" prefHeight="70.0" prefWidth="655.0" style="-fx-background-color: #4DD0E1;">
+                  <ToolBar fx:id="toolBar" prefHeight="70.0" prefWidth="655.0" style="-fx-background-color: #4DD0E1;" HBox.hgrow="ALWAYS">
                     <items>
-                        <JFXButton buttonType="RAISED" onAction="#setAddWordScene" prefHeight="60.0" prefWidth="200.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text=" Add Word">
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
+                        <JFXButton buttonType="RAISED" onAction="#setAddWordScene" prefHeight="45.0" prefWidth="150.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text=" Add Word" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                            <graphic>
                               <FontAwesomeIconView glyphName="PLUS_SQUARE" size="22" />
                            </graphic>
-                        </JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#setEditWordScene" prefHeight="60.0" prefWidth="200.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text="Edit Word">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <graphic>
-                              <FontAwesomeIconView glyphName="EDIT" size="22" />
-                           </graphic>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#setGoogleTranslateScene" prefHeight="60.0" prefWidth="215.0" ripplerFill="#00ff09" style="-fx-background-color: #388E3C;" text="API Google Translate">
+                        <JFXButton buttonType="RAISED" prefHeight="45.0" prefWidth="236.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text="API Google Translate" textFill="WHITE">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -124,6 +144,9 @@
                            </graphic>
                         </JFXButton>
                     </items>
+                     <HBox.margin>
+                        <Insets right="5.0" />
+                     </HBox.margin>
                   </ToolBar>
                </children>
             </HBox>

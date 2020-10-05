@@ -1,5 +1,6 @@
 package dictionary;
 
+import sun.plugin2.main.client.MessagePassingOneWayJSObject;
 import utility.ProjectConfig;
 
 import java.sql.PreparedStatement;
@@ -38,7 +39,8 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public ResultSet dictionarySearch(String word) {
-        String query = "SELECT * FROM "+ ProjectConfig.databaseName +" WHERE word LIKE " + "'" + word + "%'";
+        String query = "SELECT * FROM "+ ProjectConfig.databaseName
+                + " WHERE word LIKE " + "'" + word + "%'";
         return mySQLite.executeQuery(query);
     }
 
@@ -77,6 +79,18 @@ public class DictionaryManagement extends Dictionary {
             preparedStatement = mySQLite.connection.prepareStatement(sql);
             preparedStatement.setString(1, newHtml);
             preparedStatement.setString(2, word);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteWord(String word) {
+        String sql = "DELETE FROM " + ProjectConfig.databaseName
+                + " WHERE word LIKE " + "'" + word + "'";
+        try {
+            PreparedStatement preparedStatement;
+            preparedStatement = mySQLite.connection.prepareStatement(sql);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

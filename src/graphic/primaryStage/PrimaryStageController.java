@@ -4,8 +4,9 @@ import audio.TextToSpeech;
 import com.jfoenix.controls.JFXColorPicker;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import dictionary.DictionaryManagement;
-import graphic.additionalScene.AddWordScene;
-import graphic.additionalScene.EditWordScene;
+import graphic.scene.AddWordScene;
+import graphic.scene.EditWordScene;
+import graphic.dialog.ConfirmDialog;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +37,7 @@ public class PrimaryStageController {
     private JFXColorPicker colorPicker;
 
     @FXML
-    private WebView webViewBottom;
+    private WebView wordExplainView;
 
     @FXML
     private FontAwesomeIconView speakerIcon;
@@ -76,8 +77,19 @@ public class PrimaryStageController {
         String htmlOfSearchWord = myDictionary.dictionaryLookup(searchWord);
         htmlOfSearchWord = "<body style=" + "\"background-color:#FFFFFFFF;" + "\">" + htmlOfSearchWord;
         htmlOfSearchWord = htmlOfSearchWord + "</body>";
-        webViewBottom.getEngine().loadContent(htmlOfSearchWord);
+        wordExplainView.getEngine().loadContent(htmlOfSearchWord);
         speakerIcon.setVisible(true);
+    }
+
+    public void deleteWord() throws SQLException {
+        String word = searchTextField.getText();
+        ConfirmDialog deleteConfirm = new ConfirmDialog();
+        boolean isConfirm = deleteConfirm.show("Delete", "Are you sure want to delete this word?");
+        if (isConfirm) {
+            wordExplainView.getEngine().loadContent("<h1>Chúng tôi không tìm thấy từ mà bạn yêu cầu.</h1>");
+            myDictionary.deleteWord(word);
+            printRelativeWords();
+        }
     }
 
     public void printRelativeWords() throws SQLException {
@@ -102,6 +114,7 @@ public class PrimaryStageController {
     public void setAddWordScene() {
         AddWordScene addWordScene = AddWordScene.getAddWordScene();
         borderPane.setCenter(addWordScene.scene);
+        BorderPane.setMargin(borderPane.getCenter(), new Insets(0, 5, 5, 5));
     }
 
     public void setWordExplainScene() {
@@ -112,16 +125,17 @@ public class PrimaryStageController {
         EditWordScene editWordScene = EditWordScene.getEditWordScene();
         editWordScene.editWord(searchTextField.getText());
         borderPane.setCenter(editWordScene.scene);
+        BorderPane.setMargin(borderPane.getCenter(), new Insets(0, 5, 5, 5));
     }
 
-    public void setGoogleTranslateScene() {
-        Parent GoogleTranslateScene = null;
-        try {
-            GoogleTranslateScene = FXMLLoader.load(getClass().getResource("/graphic/primaryStage/GoogleTranslate.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        borderPane.setCenter(GoogleTranslateScene);
-    }
+//    public void setGoogleTranslateScene() {
+//        Parent GoogleTranslateScene = null;
+//        try {
+//            GoogleTranslateScene = FXMLLoader.load(getClass().getResource("/graphic/primaryStage/GoogleTranslate.fxml"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        borderPane.setCenter(GoogleTranslateScene);
+//    }
 
 }
