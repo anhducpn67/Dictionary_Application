@@ -128,14 +128,15 @@ public class PrimaryStageController {
         BorderPane.setMargin(borderPane.getCenter(), new Insets(0, 5, 5, 5));
     }
 
-//    public void setGoogleTranslateScene() {
-//        Parent GoogleTranslateScene = null;
-//        try {
-//            GoogleTranslateScene = FXMLLoader.load(getClass().getResource("/graphic/primaryStage/GoogleTranslate.fxml"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        borderPane.setCenter(GoogleTranslateScene);
-//    }
+    public void setGoogleTranslateScene() {
+        Parent GoogleTranslateScene = null;
+        try {
+            GoogleTranslateScene = FXMLLoader.load(getClass().getResource("../scene/GoogleTranslate.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        borderPane.setCenter(GoogleTranslateScene);
+        BorderPane.setMargin(borderPane.getCenter(), new Insets(0, 5, 5, 5));
+    }
 
 }

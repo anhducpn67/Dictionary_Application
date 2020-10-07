@@ -67,7 +67,7 @@
                         <Font size="18.0" />
                      </font>
                      <graphic>
-                        <FontAwesomeIconView glyphName="EDIT" size="20" textAlignment="CENTER" />
+                        <FontAwesomeIconView glyphName="TRASH" size="20" textAlignment="CENTER" />
                      </graphic>
                   </JFXButton>
                </items>
@@ -132,7 +132,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" prefHeight="45.0" prefWidth="236.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text="API Google Translate" textFill="WHITE">
+                        <JFXButton buttonType="RAISED" onAction="#setGoogleTranslateScene" prefHeight="45.0" prefWidth="236.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text="API Google Translate" textFill="WHITE">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
