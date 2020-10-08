@@ -1,4 +1,4 @@
-# Dictionary_Application
+# Dictionary Application
 Dictionary translate English to Vietnames <br/>
 Author: Nguyễn Trần Anh Đức
 
