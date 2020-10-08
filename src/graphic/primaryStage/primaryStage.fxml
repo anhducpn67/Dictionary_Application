@@ -13,22 +13,23 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" style="-fx-background-color: #4DD0E1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="graphic.primaryStage.PrimaryStageController">
    <left>
-      <VBox fx:id="leftVBox" prefHeight="550.0" prefWidth="201.0" style="-fx-background-color: GREY;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="560.0" prefWidth="195.0" style="-fx-background-color: GREY;" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="listView" onMouseClicked="#selectWordInListView" opacity="0.75" prefHeight="562.0" prefWidth="191.0" VBox.vgrow="ALWAYS">
+            <JFXListView fx:id="listView" onMouseClicked="#getSelectedWordInSuggestedList" opacity="0.75" prefHeight="560.0" prefWidth="196.0" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </JFXListView>
          </children>
          <BorderPane.margin>
-            <Insets bottom="5.0" />
+            <Insets bottom="5.0" left="5.0" />
          </BorderPane.margin>
       </VBox>
    </left>
@@ -36,13 +37,18 @@
       <JFXColorPicker fx:id="colorPicker" onAction="#changeColor" promptText="Change Color" style="-fx-background-color: #4DD0E1;" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
-      <VBox fx:id="wordExplainScene" prefHeight="767.0" prefWidth="605.0" style="-fx-background-color: GREY;" BorderPane.alignment="CENTER">
+      <VBox fx:id="wordExplainScene" prefHeight="766.0" prefWidth="605.0" style="-fx-background-color: GREY;" BorderPane.alignment="CENTER">
          <children>
-            <FontAwesomeIconView fx:id="speakerIcon" glyphName="VOLUME_UP" onMouseClicked="#pronounceWord" size="20">
+            <Pane maxHeight="30.0" prefHeight="30.0" prefWidth="479.0">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" top="5.0" />
-               </VBox.margin></FontAwesomeIconView>
-            <WebView fx:id="wordExplainView" opacity="0.75" pickOnBounds="true" prefHeight="711.0" prefWidth="604.0" VBox.vgrow="ALWAYS">
+               </VBox.margin>
+               <children>
+                  <FontAwesomeIconView fx:id="speakerIcon" glyphName="VOLUME_UP" layoutY="18.0" onMouseClicked="#pronounceWord" size="20" visible="false" wrappingWidth="23.571428298950195" />
+                  <FontAwesomeIconView fx:id="favorite" glyphName="STAR_ALT" layoutX="458.0" layoutY="18.0" onMouseClicked="#changeFavoriteStatus" pickOnBounds="true" size="22" textAlignment="CENTER" visible="false" />
+               </children>
+            </Pane>
+            <WebView fx:id="wordExplainView" opacity="0.75" pickOnBounds="true" prefHeight="508.0" prefWidth="489.0" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin></WebView>
@@ -103,12 +109,12 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <HBox prefHeight="79.0" prefWidth="890.0">
+            <HBox maxHeight="80.0" maxWidth="890.0" prefHeight="80.0" prefWidth="890.0" VBox.vgrow="NEVER">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" />
                </VBox.margin>
                <children>
-                  <JFXTextField fx:id="searchTextField" focusColor="BLACK" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#searchWord" onKeyReleased="#printRelativeWords" prefHeight="45.0" prefWidth="350.0" promptText=" Search English" style="-fx-background-color: GREY; -fx-text-inner-color: WHITE; -fx-prompt-text-fill: WHITE;" unFocusColor="BLACK" HBox.hgrow="NEVER">
+                  <JFXTextField fx:id="searchTextField" focusColor="BLACK" maxHeight="-Infinity" maxWidth="350.0" onAction="#searchWord" onKeyReleased="#printSuggestedWords" prefHeight="45.0" prefWidth="350.0" promptText=" Search English" style="-fx-background-color: GREY; -fx-text-inner-color: WHITE; -fx-prompt-text-fill: WHITE;" unFocusColor="BLACK" HBox.hgrow="NEVER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -119,9 +125,9 @@
                         <Cursor fx:constant="TEXT" />
                      </cursor>
                   </JFXTextField>
-                  <ToolBar fx:id="toolBar" prefHeight="70.0" prefWidth="655.0" style="-fx-background-color: #4DD0E1;" HBox.hgrow="ALWAYS">
+                  <ToolBar fx:id="toolBar" prefHeight="70.0" prefWidth="655.0" style="-fx-background-color: #4DD0E1;" HBox.hgrow="NEVER">
                     <items>
-                        <JFXButton buttonType="RAISED" onAction="#setAddWordScene" prefHeight="45.0" prefWidth="150.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text=" Add Word" textAlignment="CENTER" textFill="WHITE">
+                        <JFXButton buttonType="RAISED" onAction="#setAddWordScene" prefHeight="50.0" prefWidth="135.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text=" Add Word" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -132,7 +138,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" onAction="#setGoogleTranslateScene" prefHeight="45.0" prefWidth="236.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text="API Google Translate" textFill="WHITE">
+                        <JFXButton buttonType="RAISED" onAction="#setGoogleTranslateScene" prefHeight="50.0" prefWidth="205.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text="API Google Translate" textFill="WHITE">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -142,6 +148,17 @@
                            <graphic>
                               <FontAwesomeIconView glyphName="LANGUAGE" size="22" />
                            </graphic>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" onAction="#setFavoriteWordsScene" prefHeight="50.0" prefWidth="135.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text="Favorites" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIconView glyphName="STAR" size="22" />
+                           </graphic>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
                         </JFXButton>
                     </items>
                      <HBox.margin>

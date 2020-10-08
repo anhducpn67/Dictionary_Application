@@ -1,6 +1,5 @@
 package dictionary;
 
-import sun.plugin2.main.client.MessagePassingOneWayJSObject;
 import utility.ProjectConfig;
 
 import java.sql.PreparedStatement;
@@ -49,17 +48,28 @@ public class DictionaryManagement extends Dictionary {
         return !result.equals("<h1>Chúng tôi không tìm thấy từ mà bạn yêu cầu.</h1>");
     }
 
+    public int isFavorite(String word) {
+        String query = "SELECT favorite FROM "+ ProjectConfig.databaseName
+                + " WHERE word LIKE " + "'" + word + "'";
+        try {
+            return mySQLite.executeQuery(query).getInt("favorite");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public boolean saveWord(Word word) {
         if (isContain(word)) {
             return false;
         }
-        String sql = "INSERT INTO " + ProjectConfig.databaseName
-                + "(id, word, html)"
-                + "VALUES(?,?,?)";
+        String query = "INSERT INTO " + ProjectConfig.databaseName
+                + "(id, word, html, favorite)"
+                + "VALUES(?,?,?, 0)";
         int numberRows = mySQLite.countRows();
         try {
             PreparedStatement preparedStatement;
-            preparedStatement = mySQLite.connection.prepareStatement(sql);
+            preparedStatement = mySQLite.connection.prepareStatement(query);
             preparedStatement.setInt(1, numberRows + 1);
             preparedStatement.setString(2, word.word);
             preparedStatement.setString(3, word.html);
@@ -71,12 +81,12 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public void editWord(String word, String newHtml) {
-        String sql = "UPDATE " + ProjectConfig.databaseName
+        String query = "UPDATE " + ProjectConfig.databaseName
                 + " SET html = ?"
                 + " WHERE word = ?";
         try {
             PreparedStatement preparedStatement;
-            preparedStatement = mySQLite.connection.prepareStatement(sql);
+            preparedStatement = mySQLite.connection.prepareStatement(query);
             preparedStatement.setString(1, newHtml);
             preparedStatement.setString(2, word);
             preparedStatement.executeUpdate();
@@ -86,14 +96,33 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public void deleteWord(String word) {
-        String sql = "DELETE FROM " + ProjectConfig.databaseName
+        String query = "DELETE FROM " + ProjectConfig.databaseName
                 + " WHERE word LIKE " + "'" + word + "'";
         try {
             PreparedStatement preparedStatement;
-            preparedStatement = mySQLite.connection.prepareStatement(sql);
+            preparedStatement = mySQLite.connection.prepareStatement(query);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setFavoriteStatus(String word, int status) {
+        String query = "UPDATE " + ProjectConfig.databaseName
+                + " SET favorite" + " = " + status
+                + " WHERE word" + " IS " + "'" + word + "'";
+        try {
+            PreparedStatement preparedStatement;
+            preparedStatement = mySQLite.connection.prepareStatement(query);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ResultSet getFavoriteWord() {
+        String query = "SELECT word FROM "+ ProjectConfig.databaseName
+                + " WHERE favorite = " + "1";
+        return mySQLite.executeQuery(query);
     }
 }

@@ -7,6 +7,7 @@ import dictionary.DictionaryManagement;
 import graphic.scene.AddWordScene;
 import graphic.scene.EditWordScene;
 import graphic.dialog.ConfirmDialog;
+import graphic.scene.FavoriteScene;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,9 +44,6 @@ public class PrimaryStageController {
     private FontAwesomeIconView speakerIcon;
 
     @FXML
-    private VBox leftVBox;
-
-    @FXML
     private ListView listView;
 
     @FXML
@@ -55,12 +53,14 @@ public class PrimaryStageController {
     private ToolBar toolBar;
 
     @FXML
+    private FontAwesomeIconView favorite;
+
+    private static String currentWord;
+
+    @FXML
     public void changeColor() {
         Color selectedColor = colorPicker.getValue();
         borderPane.setBackground(new Background(new BackgroundFill(
-                selectedColor, CornerRadii.EMPTY, Insets.EMPTY
-        )));
-        leftVBox.setBackground(new Background(new BackgroundFill(
                 selectedColor, CornerRadii.EMPTY, Insets.EMPTY
         )));
         listView.setBackground(new Background(new BackgroundFill(
@@ -73,42 +73,57 @@ public class PrimaryStageController {
 
     public void searchWord() {
         setWordExplainScene();
-        String searchWord = searchTextField.getText();
-        String htmlOfSearchWord = myDictionary.dictionaryLookup(searchWord);
+        currentWord = searchTextField.getText();
+        int isFavorite = myDictionary.isFavorite(currentWord);
+        String htmlOfSearchWord = myDictionary.dictionaryLookup(currentWord);
         htmlOfSearchWord = "<body style=" + "\"background-color:#FFFFFFFF;" + "\">" + htmlOfSearchWord;
         htmlOfSearchWord = htmlOfSearchWord + "</body>";
         wordExplainView.getEngine().loadContent(htmlOfSearchWord);
         speakerIcon.setVisible(true);
+        if (isFavorite == 0) {
+            favorite.setGlyphName("STAR_ALT");
+        } else {
+            favorite.setGlyphName("STAR");
+        }
+        favorite.setVisible(true);
+    }
+
+    public void pronounceWord() {
+        TextToSpeech.speak(currentWord);
+    }
+
+    public void changeFavoriteStatus() {
+        if (favorite.getGlyphName().equals("STAR")) {
+            favorite.setGlyphName("STAR_ALT");
+            myDictionary.setFavoriteStatus(currentWord, 0);
+        } else {
+            favorite.setGlyphName("STAR");
+            myDictionary.setFavoriteStatus(currentWord, 1);
+        }
     }
 
     public void deleteWord() throws SQLException {
-        String word = searchTextField.getText();
         ConfirmDialog deleteConfirm = new ConfirmDialog();
         boolean isConfirm = deleteConfirm.show("Delete", "Are you sure want to delete this word?");
         if (isConfirm) {
             wordExplainView.getEngine().loadContent("<h1>Chúng tôi không tìm thấy từ mà bạn yêu cầu.</h1>");
-            myDictionary.deleteWord(word);
-            printRelativeWords();
+            myDictionary.deleteWord(currentWord);
+            printSuggestedWords();
         }
     }
 
-    public void printRelativeWords() throws SQLException {
+    public void printSuggestedWords() throws SQLException {
         listView.getItems().clear();
-        ResultSet relativeWord = myDictionary.dictionarySearch(searchTextField.getText());
-        while (relativeWord.next()) {
-            listView.getItems().add(relativeWord.getString("word"));
+        ResultSet resultSet = myDictionary.dictionarySearch(searchTextField.getText());
+        while (resultSet.next()) {
+            listView.getItems().add(resultSet.getString("word"));
         }
     }
 
-    public void selectWordInListView() {
+    public void getSelectedWordInSuggestedList() {
         ObservableList selectedIndices = listView.getSelectionModel().getSelectedItems();
         searchTextField.setText((String) selectedIndices.get(0));
         searchWord();
-    }
-
-    public void pronounceWord() {
-        String word = searchTextField.getText();
-        TextToSpeech.speak(word);
     }
 
     public void setAddWordScene() {
@@ -139,4 +154,9 @@ public class PrimaryStageController {
         BorderPane.setMargin(borderPane.getCenter(), new Insets(0, 5, 5, 5));
     }
 
+    public void setFavoriteWordsScene() {
+        FavoriteScene favoriteScene = FavoriteScene.getFavoriteScene();
+        borderPane.setCenter(favoriteScene.getScene());
+        BorderPane.setMargin(borderPane.getCenter(), new Insets(0, 5, 5, 5));
+    }
 }
