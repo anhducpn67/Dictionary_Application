@@ -1,4 +1,4 @@
-package translator;
+package module;
 
 import java.io.IOException;
 

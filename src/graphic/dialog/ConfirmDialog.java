@@ -13,10 +13,6 @@ public class ConfirmDialog {
         alert.setHeaderText(null);
         alert.setContentText(message);
         Optional<ButtonType> option = alert.showAndWait();
-        if (option.get() == ButtonType.OK) {
-            return true;
-        }
-        alert.showAndWait();
-        return false;
+        return option.get() == ButtonType.OK;
     }
 }

@@ -12,7 +12,7 @@
    <children>
       <Pane prefHeight="590.0" prefWidth="381.0" HBox.hgrow="ALWAYS">
          <children>
-            <FontAwesomeIconView glyphName="VOLUME_UP" layoutX="89.0" layoutY="386.0" onMouseClicked="#englishSpeak" pickOnBounds="true" size="30" translateX="100.0" translateY="100.0" wrappingWidth="28.0" />
+            <FontAwesomeIconView glyphName="VOLUME_UP" layoutX="102.0" layoutY="386.0" onMouseClicked="#englishSpeak" pickOnBounds="true" size="30" translateX="100.0" translateY="100.0" wrappingWidth="28.0" />
             <Text fill="WHITE" layoutX="11.0" layoutY="130.0" stroke="#00d0ff" strokeType="OUTSIDE" strokeWidth="0.0" text="English" textAlignment="CENTER" wrappingWidth="205.13671875">
                <font>
                   <Font size="35.0" />
@@ -30,7 +30,7 @@
       </Pane>
       <Pane prefHeight="590.0" prefWidth="364.0" HBox.hgrow="ALWAYS">
          <children>
-            <FontAwesomeIconView glyphName="VOLUME_UP" layoutX="94.0" layoutY="386.0" onMouseClicked="#translatedSpeak" pickOnBounds="true" size="30" translateX="100.0" translateY="100.0" wrappingWidth="28.0" />
+            <FontAwesomeIconView glyphName="VOLUME_UP" layoutX="85.0" layoutY="386.0" onMouseClicked="#translatedSpeak" pickOnBounds="true" size="30" translateX="100.0" translateY="100.0" wrappingWidth="28.0" />
             <Text fill="WHITE" layoutX="3.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vietnamese" textAlignment="CENTER" wrappingWidth="205.13672187924385">
                <font>
                   <Font size="35.0" />

@@ -1,9 +1,9 @@
 package graphic.scene;
 
-import audio.TextToSpeech;
+import module.TextToSpeech;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
-import translator.APIGoogleTranslate;
+import module.APIGoogleTranslate;
 
 public class GoogleTranslateScene {
     @FXML

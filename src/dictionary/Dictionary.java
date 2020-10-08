@@ -1,5 +1,5 @@
 package dictionary;
-import database.SQLite;
+import module.SQLite;
 
 public class Dictionary {
     SQLite mySQLite = SQLite.getSQLite();

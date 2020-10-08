@@ -1,4 +1,4 @@
-package database;
+package module;
 
 import utility.ProjectConfig;
 

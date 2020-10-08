@@ -1,6 +1,6 @@
 package graphic.primaryStage;
 
-import audio.TextToSpeech;
+import module.TextToSpeech;
 import com.jfoenix.controls.JFXColorPicker;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import dictionary.DictionaryManagement;
