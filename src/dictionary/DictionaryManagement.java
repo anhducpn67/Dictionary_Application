@@ -43,8 +43,8 @@ public class DictionaryManagement extends Dictionary {
         return mySQLite.executeQuery(query);
     }
 
-    public boolean isContain(Word word) {
-        String result = dictionaryLookup(word.word);
+    public boolean isContain(String word) {
+        String result = dictionaryLookup(word);
         return !result.equals("<h1>Chúng tôi không tìm thấy từ mà bạn yêu cầu.</h1>");
     }
 
@@ -60,13 +60,13 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public boolean saveWord(Word word) {
-        if (isContain(word)) {
+        if (isContain(word.word)) {
             return false;
         }
         String query = "INSERT INTO " + ProjectConfig.databaseName
                 + "(id, word, html, favorite)"
                 + "VALUES(?,?,?, 0)";
-        int numberRows = mySQLite.countRows();
+        int numberRows = mySQLite.getMaxID();
         try {
             PreparedStatement preparedStatement;
             preparedStatement = mySQLite.connection.prepareStatement(query);

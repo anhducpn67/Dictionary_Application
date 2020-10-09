@@ -7,4 +7,6 @@ public class ProjectConfig {
     final public static String dictionaryIconPath = "./resource/images/dictionary_icon.png";
     final public static int primaryStageHeight = 950;
     final public static int primaryStageWidth = 950;
+
+    final public static int numberDidYouMeanWord = 3;
 }

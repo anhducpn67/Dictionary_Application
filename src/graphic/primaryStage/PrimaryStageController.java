@@ -1,5 +1,6 @@
 package graphic.primaryStage;
 
+import module.LevenshteinDistance;
 import module.TextToSpeech;
 import com.jfoenix.controls.JFXColorPicker;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -72,20 +73,12 @@ public class PrimaryStageController {
     }
 
     public void searchWord() {
-        setWordExplainScene();
         currentWord = searchTextField.getText();
-        int isFavorite = myDictionary.isFavorite(currentWord);
-        String htmlOfSearchWord = myDictionary.dictionaryLookup(currentWord);
-        htmlOfSearchWord = "<body style=" + "\"background-color:#FFFFFFFF;" + "\">" + htmlOfSearchWord;
-        htmlOfSearchWord = htmlOfSearchWord + "</body>";
-        wordExplainView.getEngine().loadContent(htmlOfSearchWord);
-        speakerIcon.setVisible(true);
-        if (isFavorite == 0) {
-            favorite.setGlyphName("STAR_ALT");
+        if (myDictionary.isContain(currentWord)) {
+            setWordExplainScene();
         } else {
-            favorite.setGlyphName("STAR");
+            setDidYouMeanScene();
         }
-        favorite.setVisible(true);
     }
 
     public void pronounceWord() {
@@ -132,7 +125,33 @@ public class PrimaryStageController {
         BorderPane.setMargin(borderPane.getCenter(), new Insets(0, 5, 5, 5));
     }
 
+    private void setDidYouMeanScene() {
+        String htmlOfSearchWord = "<h1>Chúng tôi không tìm thấy từ mà bạn yêu cầu.</h1>";
+        htmlOfSearchWord = htmlOfSearchWord + "<h1>Có phải từ bạn muốn tìm kiếm là: </h1>";
+        String[] result = LevenshteinDistance.getTop1Score(currentWord);
+        for (String word: result) {
+            if (word.equals("null")) {
+                continue;
+            }
+            htmlOfSearchWord = htmlOfSearchWord + "<h1>" + word + "</h1>";
+        }
+        htmlOfSearchWord = "<body style=" + "\"background-color:#FFFFFFFF;" + "\">" + htmlOfSearchWord + "</body>";
+        wordExplainView.getEngine().loadContent(htmlOfSearchWord);
+        borderPane.setCenter(wordExplainScene);
+    }
+
     public void setWordExplainScene() {
+        String htmlOfSearchWord = myDictionary.dictionaryLookup(currentWord);
+        htmlOfSearchWord = "<body style=" + "\"background-color:#FFFFFFFF;" + "\">" + htmlOfSearchWord + "</body>";
+        int isFavorite = myDictionary.isFavorite(currentWord);
+        wordExplainView.getEngine().loadContent(htmlOfSearchWord);
+        if (isFavorite == 0) {
+            favorite.setGlyphName("STAR_ALT");
+        } else {
+            favorite.setGlyphName("STAR");
+        }
+        speakerIcon.setVisible(true);
+        favorite.setVisible(true);
         borderPane.setCenter(wordExplainScene);
     }
 

@@ -52,11 +52,11 @@ public class SQLite {
         return resultSet;
     }
 
-    public int countRows() {
-        String query = "SELECT COUNT(id) AS total FROM " + ProjectConfig.databaseName;
+    public int getMaxID() {
+        String query = "SELECT MAX(id) AS max FROM " + ProjectConfig.databaseName;
         try {
             ResultSet resultSet = mySQLite.executeQuery(query);
-            return resultSet.getInt("total");
+            return resultSet.getInt("max");
         } catch (SQLException e) {
             e.printStackTrace();
             return -1;

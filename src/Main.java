@@ -13,7 +13,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     public static void primaryStageConfig(Stage primaryStage) {
-        primaryStage.setTitle("Dictionary Application");
+        primaryStage.setTitle("Dictionary");
         Image dictionary_icon = Utils.loadImage(ProjectConfig.dictionaryIconPath);
         primaryStage.getIcons().add(dictionary_icon);
     }
