@@ -51,4 +51,11 @@ public class Utils {
         }
         return image;
     }
+
+    public static String setNotEditable(String html) {
+        if(html.contains("contenteditable=\"true\"")){
+            html = html.replace("contenteditable=\"true\"", "contenteditable=\"false\"");
+        }
+        return html;
+    }
 }

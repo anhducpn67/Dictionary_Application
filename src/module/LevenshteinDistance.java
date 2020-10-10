@@ -28,8 +28,7 @@ public class LevenshteinDistance {
         return f[n][m];
     }
 
-
-    public static String[] getTop1Score(String word){
+    public static String[] getTopScore(String word){
         ResultSet resultSet = myDictionary.dictionarySearch(word.substring(0, (word.length() + 1)/2));
         String[] result = new String[ProjectConfig.numberDidYouMeanWord];
         ArrayList<Pair> arrayList = new ArrayList<>();
@@ -51,7 +50,6 @@ public class LevenshteinDistance {
     }
 }
 
-
 class Pair implements Comparable {
     String word;
     int score;
@@ -60,7 +58,6 @@ class Pair implements Comparable {
         this.word = word;
         this.score = score;
     }
-
 
     @Override
     public int compareTo(Object other) {

@@ -17,6 +17,7 @@ public class DictionaryManagement extends Dictionary {
     public static DictionaryManagement getDictionaryManagement() {
         if (dictionaryManagement == null) {
             dictionaryManagement = new DictionaryManagement();
+            dictionaryManagement.loadWordFromDatabase();
         }
         return dictionaryManagement;
     }

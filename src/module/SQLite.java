@@ -5,7 +5,6 @@ import utility.ProjectConfig;
 import java.sql.*;
 
 public class SQLite {
-
     private static SQLite mySQLite;
     public Connection connection = null;
 
