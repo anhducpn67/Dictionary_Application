@@ -8,11 +8,12 @@ import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 
 /**
- * This is where all begins .
+ *
  * 
  * @author GOXR3PLUS
  *
  */
+
 public class TextToSpeech {
 	public static void speak(String text) {
 		SynthesiserV2 synthesizer = new SynthesiserV2("AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw");

@@ -1,22 +1,27 @@
 package graphic.scene.api;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import graphic.dialog.ConfirmDialog;
-import graphic.scene.primary.PrimaryStageController;
+import graphic.scene.primary.PrimaryController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import module.APIGoogleTranslate;
+import module.Language;
 import module.TextToSpeech;
 import utility.ProjectConfig;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
-public class GoogleTranslateController extends PrimaryStageController {
+public class GoogleTranslateController extends PrimaryController {
+
+    Language language = Language.getLanguage();
+
     @FXML
     private JFXTextArea englishText;
 
@@ -24,21 +29,28 @@ public class GoogleTranslateController extends PrimaryStageController {
     private JFXTextArea translatedText;
 
     @FXML
-    public JFXButton backButton;
+    private ChoiceBox choiceBoxEnglish;
+
+    @FXML
+    private ChoiceBox choiceBoxTranslated;
 
     public void setBackButton() throws IOException {
         ConfirmDialog cancelConfirm = new ConfirmDialog();
-        boolean isConfirm = cancelConfirm.show("Add New Word",
+        boolean isConfirm = cancelConfirm.show("Add Word",
                 "Are you sure want to back?");
         if (isConfirm) {
-            ProjectConfig.primaryStage.setScene(PrimaryStageController.getScene());
+            ProjectConfig.primaryStage.setScene(PrimaryController.getScene());
         }
     }
 
     public void translate() {
         String text = englishText.getText();
-        String translated = APIGoogleTranslate.translate(text);
-        translatedText.setText(translated);
+        String targetLanguage = (String) choiceBoxTranslated.getValue();
+        String sourceLanguage = (String) choiceBoxEnglish.getValue();
+        targetLanguage = language.getABBRLanguage(targetLanguage);
+        sourceLanguage = language.getABBRLanguage(sourceLanguage);
+        StringBuilder translated = APIGoogleTranslate.translate(sourceLanguage, targetLanguage, text);
+        translatedText.setText(String.valueOf(translated));
     }
 
     public void englishSpeak() {
@@ -58,5 +70,11 @@ public class GoogleTranslateController extends PrimaryStageController {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        for (Map.Entry<String, String> entry : language.mapLang.entrySet()) {
+            choiceBoxTranslated.getItems().add(entry.getValue());
+            choiceBoxEnglish.getItems().add(entry.getValue());
+        }
+        choiceBoxEnglish.setValue("ENGLISH");
+        choiceBoxTranslated.setValue("VIETNAMESE");
     }
 }

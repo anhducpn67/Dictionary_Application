@@ -7,7 +7,6 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -22,7 +21,7 @@
    <left>
       <VBox prefHeight="560.0" prefWidth="195.0" style="-fx-background-color: GREY;" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="listView" onMouseClicked="#getSelectedWordInSuggestedList" opacity="0.75" prefHeight="560.0" prefWidth="196.0" VBox.vgrow="ALWAYS">
+            <JFXListView fx:id="listView" onMouseClicked="#getSelectedWordInSuggestedList" opacity="0.75" prefHeight="560.0" prefWidth="196.0" style="-fx-font-size: 16;" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -122,7 +121,7 @@
    <center>
       <VBox style="-fx-background-color: GREY;">
          <children>
-            <ListView fx:id="listFavoriteWords" opacity="0.75" prefHeight="546.0" prefWidth="500.0" VBox.vgrow="ALWAYS" />
+            <JFXListView fx:id="listFavoriteWords" opacity="0.75" prefHeight="544.0" prefWidth="490.0" style="-fx-font-size: 18;" />
             <AnchorPane prefHeight="32.0" prefWidth="490.0" VBox.vgrow="NEVER">
                <children>
                   <JFXButton fx:id="backButton" buttonType="RAISED" layoutX="390.0" onAction="#setBackButton" prefHeight="30.0" prefWidth="100.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text="Back" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

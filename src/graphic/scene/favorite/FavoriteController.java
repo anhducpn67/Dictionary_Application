@@ -1,14 +1,14 @@
 package graphic.scene.favorite;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
 import graphic.dialog.ConfirmDialog;
-import graphic.scene.primary.PrimaryStageController;
+import graphic.scene.primary.PrimaryController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import utility.ProjectConfig;
 
 import java.io.IOException;
@@ -17,20 +17,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class FavoriteController extends PrimaryStageController implements Initializable {
+public class FavoriteController extends PrimaryController implements Initializable {
 
     @FXML
-    ListView listFavoriteWords;
-
-    @FXML
-    public JFXButton backButton;
+    JFXListView listFavoriteWords;
 
     public void setBackButton() throws IOException {
         ConfirmDialog cancelConfirm = new ConfirmDialog();
         boolean isConfirm = cancelConfirm.show("Add New Word",
                 "Are you sure want to back?");
         if (isConfirm) {
-            ProjectConfig.primaryStage.setScene(PrimaryStageController.getScene());
+            ProjectConfig.primaryStage.setScene(PrimaryController.getScene());
         }
     }
 

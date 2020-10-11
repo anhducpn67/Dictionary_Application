@@ -2,25 +2,29 @@ package graphic.scene.edit;
 
 import graphic.dialog.ConfirmDialog;
 import graphic.dialog.InformationDialog;
-import graphic.scene.primary.PrimaryStageController;
+import graphic.scene.primary.PrimaryController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.web.HTMLEditor;
+import module.SQLite;
 import utility.ProjectConfig;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.TreeMap;
 
-public class EditWordController extends PrimaryStageController implements Initializable {
+public class EditWordController extends PrimaryController implements Initializable {
     @FXML
     private HTMLEditor htmlEditor;
 
     public void setPrimaryStage() throws IOException {
-        ProjectConfig.primaryStage.setScene(PrimaryStageController.getScene());
+        ProjectConfig.primaryStage.setScene(PrimaryController.getScene());
     }
 
     public void setBackButton() throws IOException {
@@ -55,3 +59,4 @@ public class EditWordController extends PrimaryStageController implements Initia
         return new Scene(root);
     }
 }
+

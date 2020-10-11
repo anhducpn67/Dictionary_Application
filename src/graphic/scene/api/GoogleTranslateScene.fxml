@@ -8,11 +8,11 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -24,7 +24,7 @@
    <left>
       <VBox prefHeight="560.0" prefWidth="195.0" style="-fx-background-color: GREY;" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="listView" onMouseClicked="#getSelectedWordInSuggestedList" opacity="0.75" prefHeight="560.0" prefWidth="196.0" VBox.vgrow="ALWAYS">
+            <JFXListView fx:id="listView" onMouseClicked="#getSelectedWordInSuggestedList" opacity="0.75" prefHeight="560.0" prefWidth="196.0" style="-fx-font-size: 16;" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -126,31 +126,22 @@
         <items>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <JFXTextArea fx:id="englishText" layoutX="3.0" layoutY="121.0" onInputMethodTextChanged="#translate" onKeyPressed="#translate" onKeyReleased="#translate" onKeyTyped="#translate" opacity="0.8" prefHeight="344.0" prefWidth="236.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="121.0">
+                  <JFXTextArea fx:id="englishText" layoutX="3.0" layoutY="121.0" onKeyReleased="#translate" onMouseMoved="#translate" opacity="0.8" prefHeight="344.0" prefWidth="236.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="121.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextArea>
-                  <TitledPane animated="false" layoutX="20.0" layoutY="95.0" prefHeight="24.0" prefWidth="202.0" text="untitled">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                     </content>
-                  </TitledPane>
                   <FontAwesomeIconView glyphName="VOLUME_UP" layoutX="212.0" layoutY="386.0" onMouseClicked="#englishSpeak" pickOnBounds="true" size="25" translateY="100.0" wrappingWidth="21.0" AnchorPane.bottomAnchor="177.9402904510498" AnchorPane.rightAnchor="8.0" />
+                  <ChoiceBox fx:id="choiceBoxEnglish" layoutX="46.0" layoutY="92.0" onMouseClicked="#translate" prefWidth="150.0" style="-fx-font-size: 13;" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <JFXTextArea fx:id="translatedText" layoutX="3.0" layoutY="121.0" opacity="0.8" prefHeight="344.0" prefWidth="236.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="121.0">
+                  <JFXTextArea fx:id="translatedText" layoutX="3.0" layoutY="121.0" onMouseMoved="#translate" opacity="0.8" prefHeight="344.0" prefWidth="236.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="121.0">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </JFXTextArea>
-                  <TitledPane animated="false" layoutX="20.0" layoutY="95.0" prefHeight="24.0" prefWidth="202.0" text="untitled">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                  </TitledPane>
                   <FontAwesomeIconView glyphName="VOLUME_UP" layoutX="212.0" layoutY="486.0" onMouseClicked="#translatedSpeak" pickOnBounds="true" size="25" wrappingWidth="21.0" AnchorPane.bottomAnchor="77.9402904510498" AnchorPane.rightAnchor="8.0" />
                   <JFXButton fx:id="backButton" buttonType="RAISED" layoutX="141.0" layoutY="531.0" onAction="#setBackButton" prefHeight="30.0" prefWidth="100.0" ripplerFill="#00ff09" style="-fx-background-color: GREEN;" text="Back" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <font>
@@ -163,6 +154,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </JFXButton>
+                  <ChoiceBox fx:id="choiceBoxTranslated" layoutX="46.0" layoutY="92.0" onMouseMoved="#translate" prefWidth="150.0" style="-fx-font-size: 13;" />
                </children>
             </AnchorPane>
         </items>

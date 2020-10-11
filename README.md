@@ -10,7 +10,7 @@ Step 4: Change databasePath in ProjectConfig.java <br/>
 Enjoy!
 
 # Source: 
-Icon: https://www.iconexperience.com/g_collection/icons/?icon=dictionary <br/>
+Icon: https://icons-for-free.com/apps+dictionary-131996347660924613/
       https://bitbucket.org/Jerady/fontawesomefx/downloads/ <br/>
 Database: https://github.com/yenthanh132/avdict-database-sqlite-converter/blob/master/dict_hh.db <br/>
 Google API: https://github.com/goxr3plus/java-google-translator <br/>

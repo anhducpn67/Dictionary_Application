@@ -22,7 +22,7 @@
    <left>
       <VBox prefHeight="560.0" prefWidth="195.0" style="-fx-background-color: GREY;" BorderPane.alignment="CENTER">
          <children>
-            <JFXListView fx:id="listView" onMouseClicked="#getSelectedWordInSuggestedList" opacity="0.75" prefHeight="560.0" prefWidth="196.0" VBox.vgrow="ALWAYS">
+            <JFXListView fx:id="listView" onMouseClicked="#getSelectedWordInSuggestedList" opacity="0.75" prefHeight="560.0" prefWidth="196.0" style="-fx-font-size: 16;" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

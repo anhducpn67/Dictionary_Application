@@ -4,7 +4,7 @@ import dictionary.Word;
 import graphic.dialog.ConfirmDialog;
 import graphic.dialog.ErrorDialog;
 import graphic.dialog.InformationDialog;
-import graphic.scene.primary.PrimaryStageController;
+import graphic.scene.primary.PrimaryController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,12 +14,11 @@ import utility.ProjectConfig;
 import utility.Utils;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class AddWordController extends PrimaryStageController {
+public class AddWordController extends PrimaryController {
     @FXML
-    public HTMLEditor htmlEditor;
+    private HTMLEditor htmlEditor;
 
     public void setSaveButton() throws IOException {
         ConfirmDialog addWordConfirm = new ConfirmDialog();
@@ -39,7 +38,7 @@ public class AddWordController extends PrimaryStageController {
     }
 
     public void setPrimaryStage() throws IOException {
-        ProjectConfig.primaryStage.setScene(PrimaryStageController.getScene());
+        ProjectConfig.primaryStage.setScene(PrimaryController.getScene());
     }
 
     public void setBackButton() throws IOException {
