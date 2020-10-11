@@ -1,6 +1,5 @@
 package graphic.scene.favorite;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import graphic.dialog.ConfirmDialog;
 import graphic.scene.primary.PrimaryController;
@@ -20,7 +19,7 @@ import java.util.ResourceBundle;
 public class FavoriteController extends PrimaryController implements Initializable {
 
     @FXML
-    JFXListView listFavoriteWords;
+    JFXListView<String> listFavoriteWords;
 
     public void setBackButton() throws IOException {
         ConfirmDialog cancelConfirm = new ConfirmDialog();

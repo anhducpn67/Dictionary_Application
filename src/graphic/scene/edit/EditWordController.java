@@ -9,15 +9,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.web.HTMLEditor;
-import module.SQLite;
 import utility.ProjectConfig;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.TreeMap;
 
 public class EditWordController extends PrimaryController implements Initializable {
     @FXML

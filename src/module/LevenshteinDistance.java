@@ -50,7 +50,7 @@ public class LevenshteinDistance {
     }
 }
 
-class Pair implements Comparable {
+class Pair implements Comparable<Pair> {
     String word;
     int score;
 
@@ -60,7 +60,7 @@ class Pair implements Comparable {
     }
 
     @Override
-    public int compareTo(Object other) {
-        return this.score-((Pair) other).score;
+    public int compareTo(Pair other) {
+        return this.score- other.score;
     }
 }

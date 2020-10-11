@@ -29,10 +29,10 @@ public class GoogleTranslateController extends PrimaryController {
     private JFXTextArea translatedText;
 
     @FXML
-    private ChoiceBox choiceBoxEnglish;
+    private ChoiceBox<String> choiceBoxEnglish;
 
     @FXML
-    private ChoiceBox choiceBoxTranslated;
+    private ChoiceBox<String> choiceBoxTranslated;
 
     public void setBackButton() throws IOException {
         ConfirmDialog cancelConfirm = new ConfirmDialog();
@@ -45,8 +45,8 @@ public class GoogleTranslateController extends PrimaryController {
 
     public void translate() {
         String text = englishText.getText();
-        String targetLanguage = (String) choiceBoxTranslated.getValue();
-        String sourceLanguage = (String) choiceBoxEnglish.getValue();
+        String targetLanguage = choiceBoxTranslated.getValue();
+        String sourceLanguage = choiceBoxEnglish.getValue();
         targetLanguage = language.getABBRLanguage(targetLanguage);
         sourceLanguage = language.getABBRLanguage(sourceLanguage);
         StringBuilder translated = APIGoogleTranslate.translate(sourceLanguage, targetLanguage, text);

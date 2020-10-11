@@ -13,6 +13,6 @@ public class ConfirmDialog {
         alert.setHeaderText(null);
         alert.setContentText(message);
         Optional<ButtonType> option = alert.showAndWait();
-        return option.get() == ButtonType.OK;
+        return option.filter(buttonType -> buttonType == ButtonType.OK).isPresent();
     }
 }

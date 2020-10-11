@@ -52,7 +52,7 @@ public class PrimaryController implements Initializable  {
     private FontAwesomeIconView speakerIcon;
 
     @FXML
-    private ListView listView;
+    private ListView<String> listView;
 
     @FXML
     private VBox wordExplainScene;
@@ -121,23 +121,23 @@ public class PrimaryController implements Initializable  {
     }
 
     public void getSelectedWordInSuggestedList() {
-        ObservableList selectedIndices = listView.getSelectionModel().getSelectedItems();
-        searchTextField.setText((String) selectedIndices.get(0));
+        ObservableList<String> selectedIndices = listView.getSelectionModel().getSelectedItems();
+        searchTextField.setText(selectedIndices.get(0));
         searchWord();
     }
 
     private void setDidYouMeanScene() {
-        String html = "<h1>Chúng tôi không tìm thấy từ mà bạn yêu cầu.</h1>";
-        html = html + "<h1>Có phải từ bạn muốn tìm kiếm là: </h1>";
+        StringBuilder html = new StringBuilder("<h1>Chúng tôi không tìm thấy từ mà bạn yêu cầu.</h1>");
+        html.append("<h1>Có phải từ bạn muốn tìm kiếm là: </h1>");
         String[] result = LevenshteinDistance.getTopScore(currentWord);
         for (String word: result) {
             if (word == null){
                 continue;
             }
-            html = html + "<h1>" + word + "</h1>";
+            html.append("<h1>").append(word).append("</h1>");
         }
-        html = "<body style=" + "\"background-color:#FFFFFFFF;" + "\">" + html + "</body>";
-        wordExplainView.getEngine().loadContent(html);
+        html = new StringBuilder("<body style=" + "\"background-color:#FFFFFFFF;" + "\">" + html + "</body>");
+        wordExplainView.getEngine().loadContent(html.toString());
         borderPane.setCenter(wordExplainScene);
     }
 
@@ -176,6 +176,16 @@ public class PrimaryController implements Initializable  {
     public static Scene getScene() throws IOException {
         Parent root = FXMLLoader.load(PrimaryController.class.getResource("PrimaryScene.fxml"));
         return new Scene(root);
+    }
+
+    public void EnglishVietnameseVersion() throws IOException {
+        ProjectConfig.databaseName = "av";
+        ProjectConfig.primaryStage.setScene(PrimaryController.getScene());
+    }
+
+    public void AnhVietVersion() throws IOException {
+        ProjectConfig.databaseName = "va";
+        ProjectConfig.primaryStage.setScene(PrimaryController.getScene());
     }
 
     @Override

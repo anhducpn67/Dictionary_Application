@@ -5,10 +5,10 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class ProjectConfig {
-    final public static String databasePath = "jdbc:sqlite:D:/Study/OOP/Dictionary_Application/resource/dictionary/dict_hh.db";
-    final public static String databaseName = "av";
+    public static String databasePath = "jdbc:sqlite:D:/Study/OOP/Dictionary_Application/resource/dictionary/dict_hh.db";
+    public static String databaseName = "av";
 
-    final public static String dictionaryIconPath = "./resource/images/dictionary_icon.png";
+    public static String dictionaryIconPath = "./resource/images/dictionary_icon.png";
     public static Stage primaryStage = new Stage();
     static {
         primaryStage.setTitle("Dictionary");
@@ -25,5 +25,5 @@ public class ProjectConfig {
             }
         });
     }
-    final public static int numberDidYouMeanWord = 3;
+    public static int numberDidYouMeanWord = 3;
 }
