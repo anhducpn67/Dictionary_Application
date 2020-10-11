@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class ProjectConfig {
-    public static String databasePath = "jdbc:sqlite:D:/Study/OOP/Dictionary_Application/resource/dictionary/dict_hh.db";
+    public static String databasePath = "jdbc:sqlite:resource/data/dict_hh.db";
     public static String databaseName = "av";
 
     public static String dictionaryIconPath = "./resource/images/dictionary_icon.png";
