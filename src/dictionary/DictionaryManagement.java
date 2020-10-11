@@ -29,7 +29,9 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public String dictionaryLookup(String word) {
-        String query = "SELECT * FROM " + ProjectConfig.databaseName + " WHERE word LIKE " + "'" + word + "'";
+        word = word.replaceAll("'","''");
+        String query = "SELECT * FROM " + ProjectConfig.databaseName
+                + " WHERE word LIKE " + "'" + word + "'";
         ResultSet resultSet = mySQLite.executeQuery(query);
         try {
             return resultSet.getString("html");
@@ -39,6 +41,7 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public ResultSet dictionarySearch(String word) {
+        word = word.replaceAll("'","''");
         String query = "SELECT * FROM "+ ProjectConfig.databaseName
                 + " WHERE word LIKE " + "'" + word + "%'";
         return mySQLite.executeQuery(query);
@@ -50,6 +53,7 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public int isFavorite(String word) {
+        word = word.replaceAll("'","''");
         String query = "SELECT favorite FROM "+ ProjectConfig.databaseName
                 + " WHERE word LIKE " + "'" + word + "'";
         try {
@@ -64,6 +68,7 @@ public class DictionaryManagement extends Dictionary {
         if (isContain(word.word)) {
             return false;
         }
+        System.out.println(word.word);
         String query = "INSERT INTO " + ProjectConfig.databaseName
                 + "(id, word, html, favorite)"
                 + "VALUES(?,?,?, 0)";
@@ -97,6 +102,7 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public void deleteWord(String word) {
+        word = word.replaceAll("'","''");
         String query = "DELETE FROM " + ProjectConfig.databaseName
                 + " WHERE word LIKE " + "'" + word + "'";
         try {
@@ -109,6 +115,7 @@ public class DictionaryManagement extends Dictionary {
     }
 
     public void setFavoriteStatus(String word, int status) {
+        word = word.replaceAll("'","''");
         String query = "UPDATE " + ProjectConfig.databaseName
                 + " SET favorite" + " = " + status
                 + " WHERE word" + " IS " + "'" + word + "'";
@@ -123,7 +130,7 @@ public class DictionaryManagement extends Dictionary {
 
     public ResultSet getFavoriteWord() {
         String query = "SELECT word FROM "+ ProjectConfig.databaseName
-                + " WHERE favorite = " + "1";
+                + " WHERE favorite = 1";
         return mySQLite.executeQuery(query);
     }
 }
