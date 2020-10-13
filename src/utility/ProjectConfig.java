@@ -9,6 +9,7 @@ public class ProjectConfig {
     public static String databaseName = "av";
 
     public static String dictionaryIconPath = "./resource/images/dictionary_icon.png";
+    public static int numberDidYouMeanWord = 3;
     public static Stage primaryStage = new Stage();
     static {
         primaryStage.setTitle("Dictionary");
@@ -25,5 +26,4 @@ public class ProjectConfig {
             }
         });
     }
-    public static int numberDidYouMeanWord = 3;
 }
