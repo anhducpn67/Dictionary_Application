@@ -40,7 +40,7 @@ public class PrimaryController implements Initializable  {
     private BorderPane borderPane;
 
     @FXML
-    private TextField searchTextField;
+    public TextField searchTextField;
 
     @FXML
     private JFXColorPicker colorPicker;
@@ -195,10 +195,14 @@ public class PrimaryController implements Initializable  {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        String html = "<h1> Ứng dụng từ điển Anh - Việt </h1>";
-        html = html + "<h1> Tác giả: </h1>";
-        html = html + "<h1> Nguyễn Trần Anh Đức - 19020007 </h1>";
-        html = html + "<h1> Nguyễn Kim Đức - 19020006 </h1>";
-        wordExplainView.getEngine().loadContent(html);
+        if (currentWord == null) {
+            String html = "<h1> Ứng dụng từ điển Anh - Việt </h1>";
+            html = html + "<h1> Tác giả: </h1>";
+            html = html + "<h1> Nguyễn Trần Anh Đức - 19020007 </h1>";
+            html = html + "<h1> Nguyễn Kim Đức - 19020006 </h1>";
+            wordExplainView.getEngine().loadContent(html);
+        } else {
+            setWordExplainScene();
+        }
     }
 }
