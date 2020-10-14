@@ -4,7 +4,7 @@ Author: Nguyễn Trần Anh Đức - 19020007
 Author: Nguyễn Kim Đức	- 19020006
 
 # How to install for Java 8, IDE IntelliJ: 
-Step 1: Click right mouse to file "pom.xml" -> Add as Maven file <br/>
+Step 1: Click right mouse to folder src -> Make directory as -> Source root <br/>
 Step 2: Run main in Run.java <br/>
 Enjoy!
 
