@@ -3,6 +3,7 @@ package graphic.scene.favorite;
 import com.jfoenix.controls.JFXListView;
 import graphic.dialog.ConfirmDialog;
 import graphic.scene.primary.PrimaryController;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,6 +42,12 @@ public class FavoriteController extends PrimaryController implements Initializab
                 e.printStackTrace();
             }
         }
+    }
+
+    public void getFavoriteWordInList() throws IOException {
+        ObservableList<String> selectedIndices = listFavoriteWords.getSelectionModel().getSelectedItems();
+        currentWord = selectedIndices.get(0);
+        ProjectConfig.primaryStage.setScene(PrimaryController.getScene());
     }
 
     public static Scene getScene() throws IOException {
